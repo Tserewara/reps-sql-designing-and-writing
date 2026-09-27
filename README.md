@@ -47,3 +47,7 @@ If one of those is off, load the files again into an empty database.
 ## Starting over
 
 Most reps make their change inside a transaction and roll it back, so the next one starts from the seed. If a rep stops halfway, or you committed by mistake, drop the set's database from a session on the `postgres` database, create it again and load the two seed files.
+
+```sh
+psql postgresql://user:password@localhost:5433/postgres -c 'DROP DATABASE charlie' -c 'CREATE DATABASE charlie'
+```
