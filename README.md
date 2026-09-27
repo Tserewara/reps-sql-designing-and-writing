@@ -6,7 +6,7 @@ The statements are on the bench (backendgym.com/reps/sql-designing-and-writing) 
 
 ## First task: a Postgres of your own
 
-The set runs on PostgreSQL 16, loaded with a small CharlieCard schema. Getting there is part of the set, and nothing here does it for you:
+The set runs on PostgreSQL 16, loaded with a small CharlieCard schema. Setting it up is part of the set:
 
 1. Run a PostgreSQL 16 server you can reach with `psql`. A container, a compose file you write yourself, a local install: your choice.
 2. Create an empty database for the set, unless your setup already made one.
@@ -40,10 +40,10 @@ If one of those is off, load the files again into an empty database.
 
 1. Read the statement, `reps/NN/README.md`. Read `seed/` before the first one: the data is messy on purpose, and the reps are about what that mess does to a change.
 2. Write your SQL in `reps/NN/answer.sql`, which is already there in every rep. In reps 03, 06 and 09 an assistant already wrote it: read it first, then run it.
-3. Run it: `psql <connection> -f reps/NN/answer.sql`.
+3. Run it: `psql <connection> -f reps/NN/answer.sql`, where `<connection>` is your database, for example `postgresql://user:password@localhost:5433/charlie`.
 4. Compare with the expected result in the statement. Nothing checks it for you.
 5. Mark the rep done on its page on the bench (signed in with GitHub), with a line on what it showed you. Some reps ask a question or two after you finish: they are on the bench page, under the statement.
 
 ## Starting over
 
-Most reps make their change inside a transaction and roll it back, so the next one starts from the seed. If a rep stops halfway, or you committed by mistake, drop the database, create it again and load the two seed files.
+Most reps make their change inside a transaction and roll it back, so the next one starts from the seed. If a rep stops halfway, or you committed by mistake, drop the set's database from a session on the `postgres` database, create it again and load the two seed files.
